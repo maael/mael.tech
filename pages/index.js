@@ -1,3 +1,3 @@
 export default () => (
-  <div>mael.tech</div>
+  <h1>mael.tech</h1>
 );
