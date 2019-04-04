@@ -89,7 +89,7 @@ function firstDraw (c) {
 }
 
 export default () => {
-  return <canvas height={300} ref={async (ref) => {
+  return <canvas height={250} ref={async (ref) => {
     await (new FontFace('LeagueGothic', 'url(/static/fonts/leaguegothic-regular-webfont.ttf)')).load();
     firstDraw(ref)
   }}></canvas>;

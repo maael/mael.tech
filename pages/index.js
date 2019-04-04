@@ -48,7 +48,7 @@ export default () => (
         text-decoration: none;
       }
     `}</style>
-    <div style={{position: 'relative', height: 300}}>
+    <div style={{position: 'relative', height: 250}}>
       <Bg />
       <div style={{fontFamily: 'LeagueGothic', fontSize: 64, position: 'absolute', top: 40, left: 50, opacity: 0}}>Matthew Elphick</div>
       <div style={{fontFamily: 'LeagueGothic', fontSize: 48, position: 'absolute', top: 130, left: 50, opacity: 0}}>Software Engineer</div>
@@ -59,7 +59,7 @@ export default () => (
       <div style={styles.innerBox}>I mostly work with JavaScript, but I have an interest in all things web.</div>
     </div>
     <div style={{...styles.box, alignItems: 'center'}}>
-      <div>
+      <div style={{display: 'flex', width: '30vw', alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row'}}>
         <a href='https://github.com/maael'>
           <TiSocialGithubCircular size={50} />
         </a>
