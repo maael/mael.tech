@@ -31,6 +31,7 @@ export default class Index extends React.Component {
     return (
       <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
         <Head>
+          <meta name="theme-color" content={hex} />
           <meta name="viewport" content="width=device-width, initial-scale=0.8"/>
           <title>Matthew Elphick | Software Engineer</title>
           <link id="favicon" rel="icon" href={`/static/favicons/${hex.slice(1)}/favicon-16x16.png`} type="image/png" sizes="16x16" />
