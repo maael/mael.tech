@@ -36,11 +36,9 @@ function firstDraw (c) {
 
   let circles = [];
 
-
-
   function createNewCircle() {
     if (circles.length > 3) return
-    if (randomBetween(0, 50) > 1) return;
+    if (randomBetween(0, 75) > 1) return;
     const maxWidth = randomBetween(5, 15);
     circles.push({
       id: circles.length,
@@ -48,7 +46,7 @@ function firstDraw (c) {
       y: randomBetween(0, c.height),
       radius: 0,
       max: randomBetween(Math.min(c.height / 10, c.width / 10), Math.max(c.height / 4, c.width / 4)),
-      speed: randomBetweenFloat(0.5, 1.2),
+      speed: randomBetweenFloat(0.5, 0.8),
       widthMax: maxWidth,
       width: maxWidth,
       opacity: 1,
