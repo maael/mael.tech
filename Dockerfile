@@ -11,4 +11,6 @@ COPY --from=build /repo .
 
 EXPOSE 3000
 
-CMD ["/repo/node_modules/.bin/next", "start"]
+ENTRYPOINT ["node", "-r", "dotenv-extended/config"]
+
+CMD ["server/index.js"]

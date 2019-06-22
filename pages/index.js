@@ -1,31 +1,9 @@
 import Head from 'next/head';
 import {TiSocialGithubCircular, TiSocialLinkedinCircular} from 'react-icons/ti';
-import tinycolor from 'tinycolor2';
-import Bg, {colours} from '../components/SweetAndSaltyBg';
-import {colourObjectToString, randomBetween} from '../lib/util';
-
-const styles = {
-  box: {
-    padding: '20px 100px',
-    boxSizing: 'border-box',
-    width: '100vw',
-    flex: 1,
-    color: '#ffffff',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-  },
-  innerBox: {
-    padding: '20px 0px',
-  }
-}
+import OverlayedBg from '../components/OverlayedBg';
+import Box, {InnerBox} from '../components/Box';
 
 export default class Index extends React.Component {
-  static async getInitialProps() {
-    const pageColour = colourObjectToString(colours[randomBetween(0, colours.length)]);
-    const hex = tinycolor(pageColour).toHexString();
-    return {hex};
-  }
   render () {
     const {hex} = this.props;
     return (
@@ -60,17 +38,13 @@ export default class Index extends React.Component {
             text-decoration: none;
           }
         `}</style>
-        <div style={{position: 'relative', height: 250}}>
-          <Bg />
-          <div style={{fontFamily: 'LeagueGothic', fontSize: 64, position: 'absolute', top: 40, left: 50, opacity: 0}}>Matthew Elphick</div>
-          <div style={{fontFamily: 'LeagueGothic', fontSize: 48, position: 'absolute', top: 130, left: 50, opacity: 0}}>Software Engineer</div>
-        </div>
-        <div id='colour' style={{...styles.box, background: hex, color: '#000000'}}>
-          <div style={styles.innerBox}>Hi, I'm Matt. I'm a Software Engineer, and I work at <a href='https://threadsstyling.com'>Threads Styling</a>.</div>
-          <div style={styles.innerBox}>You can find work I've been doing on my <a href='https://github.com/maael'>GitHub</a> profile.</div>
-          <div style={styles.innerBox}>I mostly work with JavaScript, but I have an interest in all things web.</div>
-        </div>
-        <div style={{...styles.box, alignItems: 'center'}}>
+        <OverlayedBg primary='Matthew Elphick' secondary='Software Engineer' />
+        <Box style={{background: hex, color: '#000000'}}>
+          <InnerBox>Hi, I'm Matt. I'm a Software Engineer, and I work at <a href='https://threadsstyling.com'>Threads Styling</a>.</InnerBox>
+          <InnerBox>You can find work I've been doing on my <a href='https://github.com/maael'>GitHub</a> profile.</InnerBox>
+          <InnerBox>I mostly work with JavaScript, but I have an interest in all things web.</InnerBox>
+        </Box>
+        <Box style={{alignItems: 'center'}}>
           <div style={{display: 'flex', width: '30vw', alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row'}}>
             <a href='https://github.com/maael'>
               <TiSocialGithubCircular size={50} />
@@ -79,7 +53,7 @@ export default class Index extends React.Component {
               <TiSocialLinkedinCircular size={50} />
             </a>
           </div>
-        </div>
+        </Box>
       </div>
     )
   }

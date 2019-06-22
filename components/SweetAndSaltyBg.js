@@ -28,7 +28,7 @@ export const colours = [
   }
 ]
 
-function firstDraw (c) {
+function firstDraw (c, primary = '', secondary = '') {
   if (!c) return;
   c.width = window.innerWidth;
   const ctx = c.getContext("2d");
@@ -60,9 +60,9 @@ function firstDraw (c) {
     ctx.clearRect(0, 0, c.width, c.height);
     ctx.fillStyle = "#ffffff";
     ctx.font = '64px LeagueGothic';
-    ctx.fillText('Matthew Elphick', 50, 100);
+    ctx.fillText(primary, 50, 100);
     ctx.font = '48px LeagueGothic';
-    ctx.fillText('Software Engineer', 50, 175);
+    ctx.fillText(secondary, 50, 175);
     [...circles].forEach((circle) => {
       ctx.save();
       circle.radius += circle.speed;
@@ -86,9 +86,15 @@ function firstDraw (c) {
   window.requestAnimationFrame(draw);
 }
 
-export default () => {
-  return <canvas height={250} ref={async (ref) => {
-    await (new FontFace('LeagueGothic', 'url(/static/fonts/leaguegothic-regular-webfont.ttf)')).load();
-    firstDraw(ref)
-  }}></canvas>;
+export default class SweetAndSaltyBg extends React.Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+  render () {
+    const {primary, secondary, height = 250} = this.props;
+    return <canvas height={height} ref={async (ref) => {
+      await (new FontFace('LeagueGothic', 'url(/static/fonts/leaguegothic-regular-webfont.ttf)')).load();
+      firstDraw(ref, primary, secondary)
+    }}></canvas>;
+  }
 }
